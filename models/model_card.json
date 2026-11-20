@@ -1,0 +1,59 @@
+{
+  "model_name": "Gradient boosting + engineered",
+  "description": "Gradient boosting with temperature difference and power added.",
+  "trained_on": "2026-11-20",
+  "sklearn_version": "1.9.1",
+  "model_file": "failure_model.joblib",
+  "input_columns": [
+    "type",
+    "air_temperature_k",
+    "process_temperature_k",
+    "rotational_speed_rpm",
+    "torque_nm",
+    "tool_wear_min"
+  ],
+  "input_notes": "type coded L=0, M=1, H=2 (not scaled); five sensors scaled with ai4i_sensor_scaler.joblib in this order.",
+  "engineered_features": [
+    "temperature_difference_k",
+    "calculated_power_w"
+  ],
+  "excluded_columns": [
+    "udi",
+    "product_id",
+    "twf",
+    "hdf",
+    "pwf",
+    "osf",
+    "rnf"
+  ],
+  "threshold": 0.3032388259211821,
+  "threshold_method": "maximises failure-class F1 on 5-fold out-of-fold training probabilities",
+  "train_rows": 8000,
+  "train_failures": 271,
+  "test_rows": 2000,
+  "test_failures": 68,
+  "cv_metrics": {
+    "accuracy": 0.9895,
+    "precision": 0.8945147679324894,
+    "recall": 0.7822878228782287,
+    "f1": 0.8346456692913385,
+    "roc_auc": 0.9752530246223668,
+    "pr_auc": 0.8653181751897215,
+    "tn": 7704,
+    "fp": 25,
+    "fn": 59,
+    "tp": 212
+  },
+  "test_metrics": {
+    "accuracy": 0.989,
+    "precision": 0.8484848484848485,
+    "recall": 0.8235294117647058,
+    "f1": 0.835820895522388,
+    "roc_auc": 0.9755054195591281,
+    "pr_auc": 0.8900335169644074,
+    "tn": 1922,
+    "fp": 10,
+    "fn": 12,
+    "tp": 56
+  }
+}
